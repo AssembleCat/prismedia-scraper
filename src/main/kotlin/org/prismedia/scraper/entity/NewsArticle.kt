@@ -25,8 +25,8 @@ class NewsArticle(
     @Column(nullable = false)
     val source: String,
     
-    @Column(nullable = false)
-    val publishedDate: LocalDateTime,
+    @Column(nullable = true)
+    val publishedDate: LocalDateTime? = null,
     
     @Column(nullable = false)
     val createdAt: LocalDateTime = LocalDateTime.now()

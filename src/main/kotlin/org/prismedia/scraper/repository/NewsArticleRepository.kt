@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface NewsArticleRepository : JpaRepository<NewsArticle, Long> {
-    fun existsByLink(link: String): Boolean
+    fun existsByLinkAndSource(link: String, source: String): Boolean
 }
