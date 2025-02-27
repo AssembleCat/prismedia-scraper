@@ -9,6 +9,14 @@ spring:
         format_sql: true
 
 logging:
+  charset:
+    console: UTF-8
+    file: UTF-8
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%thread] %cyan(%logger{36}) - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
+  file:
+    name: ${LOGGING_FILE_NAME:/logs/application.log}
   level:
     root: INFO
     org.prismedia: INFO
@@ -34,6 +42,14 @@ spring:
       path: /h2-console
 
 logging:
+  charset:
+    console: UTF-8
+    file: UTF-8
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%thread] %cyan(%logger{36}) - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
+  file:
+    name: ${LOGGING_FILE_NAME:/logs/application.log}
   level:
     org.prismedia: DEBUG
     org.hibernate.SQL: DEBUG
@@ -51,7 +67,16 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: validate
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: update
+logging:
+  charset:
+    console: UTF-8
+    file: UTF-8
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%thread] %cyan(%logger{36}) - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
+  file:
+    name: ${LOGGING_FILE_NAME:/logs/application.log}
+  level:
+    org.prismedia: DEBUG
+    org.hibernate.SQL: DEBUG

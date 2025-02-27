@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     build: .
@@ -9,9 +7,21 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
       - SPRING_DATASOURCE_USERNAME=newsuser
       - SPRING_DATASOURCE_PASSWORD=newspass
+      - LOGGING_LEVEL_ROOT=INFO
+      - LOGGING_LEVEL_ORG_PRISMEDIA=DEBUG
+      - LOGGING_FILE_NAME=/logs/application.log
+    volumes:
+      - ./newsdb:/workspace/app/newsdb
+      - ./logs:/logs
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   db:
     image: postgres:16-alpine
@@ -23,7 +33,11 @@ services:
       - POSTGRES_PASSWORD=newspass
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U newsuser -d newsdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres_data:

@@ -8,9 +8,9 @@ COPY settings.gradle.kts .
 COPY src src
 
 RUN chmod +x ./gradlew
-RUN ./gradlew build -x test
+RUN ./gradlew bootJar -x test
 
 FROM eclipse-temurin:21-jre-alpine
 VOLUME /tmp
-COPY --from=build /workspace/app/build/libs/*.jar app.jar
+COPY --from=build /workspace/app/build/libs/app.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
