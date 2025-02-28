@@ -1,9 +1,9 @@
 # Prismedia Scraper (프리즈미디어 스크래퍼)
 
-## 📌 프로젝트 소개
+## 프로젝트 소개
 Prismedia Scraper는 다양한 언론사의 RSS 피드를 수집하고 저장하는 자동화된 뉴스 스크래핑 시스템입니다. 매시간 정각에 실행되어 최신 뉴스 기사를 수집하고 데이터베이스에 저장합니다.
 
-## ✨ 주요 기능
+## 주요 기능
 - 📰 다양한 언론사의 RSS 피드 자동 수집
 - 🔧 언론사별 맞춤형 스크래핑 전략 적용
 - 🔍 중복 기사 방지를 위한 자동 필터링
@@ -19,12 +19,10 @@ Prismedia Scraper는 다양한 언론사의 RSS 피드를 수집하고 저장하
 | 빌드 도구 | Gradle |
 | RSS 파싱 | Rome Tools |
 
-## 🚀 시작하기
-
-### 필수 요구사항
-- ☕ JDK 21
-- 🐳 Docker
-- 🔧 Docker Compose
+### 요구사항
+- JDK 21
+- Docker
+- Docker Compose
 
 ### 설치 및 실행
 ```bash
@@ -35,7 +33,7 @@ Prismedia Scraper는 다양한 언론사의 RSS 피드를 수집하고 저장하
 docker-compose up -d --build
 ```
 
-### 📁 프로젝트 구조
+### 프로젝트 구조
 ```
 prismedia-scraper/
 ├── 📂 src/main/kotlin/
@@ -48,12 +46,9 @@ prismedia-scraper/
 └── 📄 build.gradle.kts     # 빌드 설정
 ```
 
-### ⚙️ 설정 파일
+### 설정 파일
 | 파일 | 설명 |
 |------|------|
 | `src/main/resources/rss/rss.csv` | RSS 피드 소스 목록 |
 | `application.yml` | 애플리케이션 설정 |
 | `docker-compose.yml` | Docker 환경 설정 |
-
-## 📝 라이선스
-이 프로젝트는 MIT 라이선스 하에 배포됩니다.
